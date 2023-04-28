@@ -1,9 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Awesome Events for: <%= current_user.email%></h1>
+<h1>Awesome Events created by: <%= @user.email%></h1>
 
 <div id="events">
-  <% @events.each do |event| %>
+  <% @user.events.each do |event| %>
     <%= render event %>
     <p>
       <%= link_to "Show this event", event %>

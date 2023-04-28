@@ -23,7 +23,7 @@ class EventsController < ApplicationController
   def create
     #original rails scaffold 
     #@event = Event.new(event_params)
-    @event = current_user.created_events.build(event_params)
+    @event = current_user.events.build(event_params)
 
     respond_to do |format|
       if @event.save
