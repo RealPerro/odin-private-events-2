@@ -1,9 +1,24 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Awesome Events for: <%= current_user.email%></h1>
+<h1>Awesome Events available: <%= current_user.email%></h1>
 
-<div id="events">
-  <% @events.each do |event| %>
+<div id="events" class = "upcoming">
+  <h3>Upcoming Events:</h3>
+  <% @events.upcoming.each do |event| %>
+    <%= render event %>
+    <h3>Attending:</h3>
+    <% event.attended_users.uniq.each do |person| %>
+      <p> <%= link_to person.email, person %> </p>
+    <% end %>
+    <p>
+      <%= link_to "Show this event", event %>
+    </p>
+  <% end %>
+</div>
+
+<div id="events" class = "past">
+  <h3>Past Events:</h3>
+  <% @events.past.each do |event| %>
     <%= render event %>
     <h3>Attending:</h3>
     <% event.attended_users.uniq.each do |person| %>

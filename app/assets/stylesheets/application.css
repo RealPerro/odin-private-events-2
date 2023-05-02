@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ .past {
+  background-color:lightgray;
+}
+
+.upcoming {
+  background-color:lightgreen;
+}

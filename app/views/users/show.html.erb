@@ -14,7 +14,7 @@
 
 <h1>Events attended by: <%= @user.email%></h1>
 
-<div id="future_events" style = "background-color:lightgreen;">
+<div id="future_events" class = "upcoming">
   <h3>Upcoming Events:</h3>
   <% @user.attended_events.upcoming.order('date DESC').uniq.each do |event| %>
     <%= render event %>
@@ -24,7 +24,7 @@
   <% end %>
 </div>
 
-<div id="past_events" style = "background-color:lightgray;">
+<div id="past_events" class  = "past">
   <h3>Past Events:</h3>
   <% @user.attended_events.past.order('date DESC').uniq.each do |event| %>
     <%= render event %>
