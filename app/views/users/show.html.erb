@@ -11,4 +11,27 @@
   <% end %>
 </div>
 
+
+<h1>Events attended by: <%= @user.email%></h1>
+
+<div id="future_events" style = "background-color:lightgreen;">
+  <h3>Upcoming Events:</h3>
+  <% @user.attended_events.upcoming.order('date DESC').uniq.each do |event| %>
+    <%= render event %>
+    <p>
+      <%= link_to "Show this event", event %>
+    </p>
+  <% end %>
+</div>
+
+<div id="past_events" style = "background-color:lightgray;">
+  <h3>Past Events:</h3>
+  <% @user.attended_events.past.order('date DESC').uniq.each do |event| %>
+    <%= render event %>
+    <p>
+      <%= link_to "Show this event", event %>
+    </p>
+  <% end %>
+</div>
+
 <%= link_to "New event", new_event_path %>
