@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   devise_for :users
-  resources :events
+  resources :events do
+    member do
+      put :add_attendee
+    end
+  end
   resources :users
 end

@@ -7,7 +7,7 @@
     <%= render event %>
     <h3>Attending:</h3>
     <% event.attended_users.each do |person| %>
-      <p> <%= person.email %> </p>
+      <p> <%= link_to person.email, person %> </p>
     <% end %>
     <p>
       <%= link_to "Show this event", event %>

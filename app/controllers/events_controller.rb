@@ -59,6 +59,19 @@ class EventsController < ApplicationController
     end
   end
 
+  def add_attendee
+    @user = current_user
+    @event = Event.find(params[:id])
+
+    @event.attended_users.include?(@user) ? nil : @event.attended_users << @user
+
+    if @event.save
+      redirect_to event_url(@event), notice: "You are in :-)"
+    else
+      render :show, status: :unprocessable_entity
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
